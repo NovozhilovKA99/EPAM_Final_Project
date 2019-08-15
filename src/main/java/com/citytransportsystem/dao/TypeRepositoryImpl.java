@@ -4,8 +4,8 @@ import com.citytransportsystem.dto.Type;
 
 public class TypeRepositoryImpl implements TypeRepository {
     @Override
-    public void create(Type type) {
-
+    public int create(Type type) {
+        return 0;
     }
 
     @Override
@@ -14,12 +14,12 @@ public class TypeRepositoryImpl implements TypeRepository {
     }
 
     @Override
-    public void update(Type type) {
-
+    public int update(Type type) {
+        return 0;
     }
 
     @Override
-    public void delete(Long idType) {
-
+    public int delete(Long idType) {
+        return 0;
     }
 }

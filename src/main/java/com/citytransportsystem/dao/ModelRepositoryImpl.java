@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public class ModelRepositoryImpl implements ModelRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -20,9 +19,9 @@ public class ModelRepositoryImpl implements ModelRepository {
     );
 
     @Override
-    public void create(Model model) {
+    public int create(Model model) {
         String sql = "insert into 'mydb'.'Model' ('idModel', 'description', 'Type_idType') values(?, ?, ?)";
-        jdbcTemplate.update(sql, model.getIdModel(), model.getDescription(), model.getIdType());
+        return jdbcTemplate.update(sql, model.getIdModel(), model.getDescription(), model.getIdType());
     }
 
     @Override
@@ -37,15 +36,15 @@ public class ModelRepositoryImpl implements ModelRepository {
     }
 
     @Override
-    public void update(Model model) {
+    public int update(Model model) {
         String sql = "update model from 'mydb'.'Model' set description = ? where idModel = ?";
-        jdbcTemplate.update(sql, model.getDescription(), model.getIdType());
+        return jdbcTemplate.update(sql, model.getDescription(), model.getIdType());
     }
 
     @Override
-    public void delete(Long idModel) {
+    public int delete(Long idModel) {
         String sql = "delete model from 'mydb'.'Model' where idModel = ?";
-        jdbcTemplate.update(sql, idModel);
+        return jdbcTemplate.update(sql, idModel);
     }
 
 }

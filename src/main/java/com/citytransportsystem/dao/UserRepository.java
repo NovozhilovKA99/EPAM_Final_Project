@@ -4,13 +4,11 @@ import com.citytransportsystem.dto.Type;
 import com.citytransportsystem.dto.User;
 
 public interface UserRepository {
-    void create(User user);
+    int create(User user);
 
     User get(Long idUser);
 
-    Type getUserType(Long idUser);
+    int update(User user);
 
-    void update(User user);
-
-    void delete(Long idUser);
+    int delete(Long idUser);
 }

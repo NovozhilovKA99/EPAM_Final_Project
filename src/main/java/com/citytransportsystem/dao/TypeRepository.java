@@ -3,11 +3,11 @@ package com.citytransportsystem.dao;
 import com.citytransportsystem.dto.Type;
 
 public interface TypeRepository {
-    void create(Type type);
+    int create(Type type);
 
     Type get(Long idType);
 
-    void update(Type type);
+    int update(Type type);
 
-    void delete(Long idType);
+    int delete(Long idType);
 }

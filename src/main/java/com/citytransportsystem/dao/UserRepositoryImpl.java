@@ -27,9 +27,9 @@ public class UserRepositoryImpl implements UserRepository {
     );
 
     @Override
-    public void create(User user) {
+    public int create(User user) {
         String sql = "insert into 'mydb'.'user' ('idUser', 'fullName', 'birthday', 'position, 'contractId') VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, user.getIdUser(), user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId());
+        return jdbcTemplate.update(sql, user.getIdUser(), user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId());
     }
 
     @Override
@@ -44,21 +44,14 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
-    //TODO Type Construction
     @Override
-    public Type getUserType(Long idUser) {
-        String sql = "Select position from 'mydb'.'type' where idUser = ?";
-        return null;
-    }
-
-    @Override
-    public void update(User user){
+    public int update(User user){
         String sql = "update user from 'mydb'.'user' set fullName = ?, birthday = ?, position = ?, contractId = ? where idUser = ?";
-        jdbcTemplate.update(sql, user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId(), user.getIdUser());
+        return jdbcTemplate.update(sql, user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId(), user.getIdUser());
     }
 
-    public void delete(Long idUser){
+    public int delete(Long idUser){
         String sql = "delete user from 'mydb'.'user' where idUser = ?";
-        jdbcTemplate.update(sql, idUser);
+        return jdbcTemplate.update(sql, idUser);
     }
 }

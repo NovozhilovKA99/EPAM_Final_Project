@@ -3,11 +3,11 @@ package com.citytransportsystem.dao;
 import com.citytransportsystem.dto.Route;
 
 public interface RouteRepository {
-    void create(Route route);
+    int create(Route route);
 
     Route get(Long idRoute);
 
-    void update(Route route);
+    int update(Route route);
 
-    void delete(Long idRoute);
+    int delete(Long idRoute);
 }

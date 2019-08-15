@@ -3,11 +3,11 @@ package com.citytransportsystem.dao;
 import com.citytransportsystem.dto.Model;
 
 public interface ModelRepository {
-    void create(Model model);
+    int create(Model model);
 
     Model get(Long idModel);
 
-    void update(Model model);
+    int update(Model model);
 
-    void delete(Long idModel);
+    int delete(Long idModel);
 }
