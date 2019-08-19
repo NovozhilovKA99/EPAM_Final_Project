@@ -1,6 +1,5 @@
-package com.citytransportsystem.dao;
+package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.Type;
 import com.citytransportsystem.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

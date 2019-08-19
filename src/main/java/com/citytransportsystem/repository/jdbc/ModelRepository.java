@@ -1,4 +1,4 @@
-package com.citytransportsystem.dao;
+package com.citytransportsystem.repository.jdbc;
 
 import com.citytransportsystem.dto.Model;
 

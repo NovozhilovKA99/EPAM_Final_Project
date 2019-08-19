@@ -1,6 +1,6 @@
 package com.citytransportsystem.services;
 
-import com.citytransportsystem.dao.UserRepository;
+import com.citytransportsystem.repository.jdbc.UserRepository;
 import com.citytransportsystem.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
