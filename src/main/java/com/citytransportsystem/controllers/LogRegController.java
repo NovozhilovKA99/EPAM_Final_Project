@@ -64,7 +64,7 @@ public class LogRegController {
         User user = new User(idUser, fullName, birthday, position, contractId);
 
         //TODO убрать в userService
-        if (userService.getById(user.getIdUser()) == null){
+        if (userService.getById(user.getId()) == null){
             userService.regUser(user);
         } else {
             modelAndView.addObject("errorMsg", "Пользователь с таким ID уже существует");

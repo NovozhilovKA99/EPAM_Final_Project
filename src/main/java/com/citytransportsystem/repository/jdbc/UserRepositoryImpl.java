@@ -18,39 +18,33 @@ public class UserRepositoryImpl implements UserRepository {
     private DateTimeFormatter dateTimeFormatter;
 
     private RowMapper<User> rowMapper = (rowStr, rowNum) -> new User(
-            rowStr.getLong("idUser"),
+            rowStr.getLong("id"),
             rowStr.getString("fullName"),
-            LocalDate.parse(rowStr.getString("birthdate"), dateTimeFormatter),
+            LocalDate.parse(rowStr.getString("birthday"), dateTimeFormatter),
             rowStr.getString("position"),
             rowStr.getLong("contractId")
     );
 
     @Override
     public int create(User user) {
-        String sql = "insert into 'mydb'.'user' ('idUser', 'fullName', 'birthday', 'position, 'contractId') VALUES (?, ?, ?, ?, ?)";
-        return jdbcTemplate.update(sql, user.getIdUser(), user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId());
+        String sql = "insert into 'mydb'.'user' ('id', 'fullName', 'birthday', 'position, 'contractId') VALUES (?, ?, ?, ?, ?)";
+        return jdbcTemplate.update(sql, user.getId(), user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId());
     }
 
     @Override
-    public User get(Long idUser){
-        String sql = "Select * from 'mydb'.'user' where idUser = ?";
-        List<User> userList = jdbcTemplate.query(sql, new Object[]{idUser}, rowMapper);
-        if (userList.isEmpty()){
-            return null;
-        }
-        else{
-            return userList.get(0);
-        }
+    public User get(Long id){
+        String sql = "Select 'id', 'fullName', 'birthday', 'position, 'contractId' from 'mydb'.'user' where id = ?";
+        return jdbcTemplate.queryForObject(sql, User.class, id);
     }
 
     @Override
     public int update(User user){
-        String sql = "update user from 'mydb'.'user' set fullName = ?, birthday = ?, position = ?, contractId = ? where idUser = ?";
-        return jdbcTemplate.update(sql, user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId(), user.getIdUser());
+        String sql = "update user from 'mydb'.'user' set 'fullName' = ?, 'birthday' = ?, 'position' = ?, 'contractId' = ? where 'id' = ?";
+        return jdbcTemplate.update(sql, user.getFullName(), user.getBirthday(), user.getPosition(), user.getContractId(), user.getId());
     }
 
-    public int delete(Long idUser){
-        String sql = "delete user from 'mydb'.'user' where idUser = ?";
-        return jdbcTemplate.update(sql, idUser);
+    public int delete(Long id){
+        String sql = "delete user from 'mydb'.'user' where 'id' = ?";
+        return jdbcTemplate.update(sql, id);
     }
 }

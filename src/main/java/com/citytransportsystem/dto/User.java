@@ -4,30 +4,30 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class User {
-    protected Long idUser;
-    protected String fullName;
-    protected LocalDate birthday;
-    protected String position;
-    protected Long contractId;
+    private Long id;
+    private String fullName;
+    private LocalDate birthday;
+    private String position;
+    private Long contractId;
 
-    public User(Long idUser, String fullName, LocalDate birthday, String position, Long contractId) {
-        this.idUser = idUser;
+    public User(Long id, String fullName, LocalDate birthday, String position, Long contractId) {
+        this.id = id;
         this.fullName = fullName;
         this.birthday = birthday;
         this.position = position;
         this.contractId = contractId;
     }
 
-    public User(Long idUser, String fullName, LocalDate birthday, Long contractId) {
-        this.idUser = idUser;
+    public User(Long id, String fullName, LocalDate birthday, Long contractId) {
+        this.id = id;
         this.fullName = fullName;
         this.birthday = birthday;
         this.position = "User";
         this.contractId = contractId;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
     public String getFullName() {
@@ -59,18 +59,18 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return idUser.equals(user.idUser);
+        return id.equals(user.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idUser);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "idUser=" + idUser +
+                "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", birthday=" + birthday +
                 ", position='" + position + '\'' +

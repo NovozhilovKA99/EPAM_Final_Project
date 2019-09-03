@@ -12,38 +12,33 @@ public class ModelRepositoryImpl implements ModelRepository {
     private JdbcTemplate jdbcTemplate;
 
     private RowMapper<Model> rowMapper = (rowStr, rowNum) -> new Model(
-            rowStr.getLong("idModel"),
+            rowStr.getLong("id"),
             rowStr.getString("description"),
             rowStr.getLong("Type_idType")
     );
 
     @Override
     public int create(Model model) {
-        String sql = "insert into 'mydb'.'Model' ('idModel', 'description', 'Type_idType') values(?, ?, ?)";
-        return jdbcTemplate.update(sql, model.getIdModel(), model.getDescription(), model.getIdType());
+        String sql = "insert into 'mydb'.'Model' ('id', 'description', 'Type_idType') values(?, ?, ?)";
+        return jdbcTemplate.update(sql, model.getId(), model.getDescription(), model.getTypeId());
     }
 
     @Override
-    public Model get(Long idModel) {
-        String sql = "select * from 'mydb'.'Model' where idModel = ?";
-        List<Model> model = jdbcTemplate.query(sql, new Object[]{idModel}, rowMapper);
-        if (model.isEmpty()) {
-            return null;
-        } else {
-            return model.get(0);
-        }
+    public Model get(Long id) {
+        String sql = "select * from 'mydb'.'Model' where 'id' = ?";
+        return jdbcTemplate.queryForObject(sql, Model.class, id);
     }
 
     @Override
     public int update(Model model) {
-        String sql = "update model from 'mydb'.'Model' set description = ? where idModel = ?";
-        return jdbcTemplate.update(sql, model.getDescription(), model.getIdType());
+        String sql = "update model from 'mydb'.'Model' set 'description' = ? where 'id' = ?";
+        return jdbcTemplate.update(sql, model.getDescription(), model.getTypeId());
     }
 
     @Override
-    public int delete(Long idModel) {
-        String sql = "delete model from 'mydb'.'Model' where idModel = ?";
-        return jdbcTemplate.update(sql, idModel);
+    public int delete(Long id) {
+        String sql = "delete model from 'mydb'.'Model' where 'id' = ?";
+        return jdbcTemplate.update(sql, id);
     }
 
 }

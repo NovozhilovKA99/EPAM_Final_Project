@@ -3,16 +3,16 @@ package com.citytransportsystem.dto;
 import java.util.Objects;
 
 public class Type {
-    private Long idType;
+    private Long id;
     private String description;
 
-    public Type(Long idType, String description) {
-        this.idType = idType;
+    public Type(Long id, String description) {
+        this.id = id;
         this.description = description;
     }
 
-    public Long getIdType() {
-        return idType;
+    public Long getId() {
+        return id;
     }
 
     public String getDescription() {
@@ -24,18 +24,18 @@ public class Type {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Type type = (Type) o;
-        return idType.equals(type.idType);
+        return id.equals(type.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idType);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "Type{" +
-                "idType=" + idType +
+                "id=" + id +
                 ", description='" + description + '\'' +
                 '}';
     }

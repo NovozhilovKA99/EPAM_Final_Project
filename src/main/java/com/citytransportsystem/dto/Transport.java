@@ -3,22 +3,22 @@ package com.citytransportsystem.dto;
 import java.util.Objects;
 
 public class Transport {
-    private Long idTransport;
-    private Long idModel;
+    private Long id;
+    private Long modelId;
     private String transportNumber;
 
-    public Transport(Long idTransport, Long idModel, String transportNumber) {
-        this.idTransport = idTransport;
-        this.idModel = idModel;
+    public Transport(Long id, Long modelId, String transportNumber) {
+        this.id = id;
+        this.modelId = modelId;
         this.transportNumber = transportNumber;
     }
 
-    public Long getIdTransport() {
-        return idTransport;
+    public Long getId() {
+        return id;
     }
 
-    public Long getIdModel() {
-        return idModel;
+    public Long getModelId() {
+        return modelId;
     }
 
     public String getTransportNumber() {
@@ -30,19 +30,19 @@ public class Transport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transport transport = (Transport) o;
-        return idTransport.equals(transport.idTransport);
+        return id.equals(transport.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idTransport);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "Transport{" +
-                "idTransport=" + idTransport +
-                ", idModel=" + idModel +
+                "id=" + id +
+                ", modelId=" + modelId +
                 ", transportNumber='" + transportNumber + '\'' +
                 '}';
     }

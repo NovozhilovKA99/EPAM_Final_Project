@@ -4,42 +4,66 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Cast {
-    private Long idCast;
-    private User driver;
-    private User conductor;
-    private Route route;
-    private Transport transport;
+    private Long id;
+    private Long driverId;
+    private Long conductorId;
+    private Long routeId;
+    private Long transportId;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public Cast(Long idCast, User driver, User conductor, Route route, Transport transport, LocalDateTime startTime, LocalDateTime endTime) {
-        this.idCast = idCast;
-        this.driver = driver;
-        this.conductor = conductor;
-        this.route = route;
-        this.transport = transport;
+    public Cast(Long id, Long driverId, Long conductorId, Long routeId, Long transportId, LocalDateTime startTime, LocalDateTime endTime) {
+        this.id = id;
+        this.driverId = driverId;
+        this.conductorId = conductorId;
+        this.routeId = routeId;
+        this.transportId = transportId;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    public Long getIdCast() {
-        return idCast;
+    public Long getId() {
+        return id;
     }
 
-    public User getDriver() {
-        return driver;
+    public Long getDriverId() {
+        return driverId;
     }
 
-    public User getConductor() {
-        return conductor;
+    public void setDriverId(Long driverId) {
+        this.driverId = driverId;
     }
 
-    public Route getRoute() {
-        return route;
+    public Long getConductorId() {
+        return conductorId;
     }
 
-    public Transport getTransport() {
-        return transport;
+    public void setConductorId(Long conductorId) {
+        this.conductorId = conductorId;
+    }
+
+    public Long getRouteId() {
+        return routeId;
+    }
+
+    public void setRouteId(Long routeId) {
+        this.routeId = routeId;
+    }
+
+    public Long getTransportId() {
+        return transportId;
+    }
+
+    public void setTransportId(Long transportId) {
+        this.transportId = transportId;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     public LocalDateTime getStartTime() {
@@ -55,25 +79,12 @@ public class Cast {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cast cast = (Cast) o;
-        return idCast.equals(cast.idCast);
+        return id.equals(cast.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCast);
-    }
-
-    @Override
-    public String toString() {
-        return "Cast{" +
-                "idCast=" + idCast +
-                ", driver=" + driver +
-                ", conductor=" + conductor +
-                ", route=" + route +
-                ", transport=" + transport +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                '}';
+        return Objects.hash(id);
     }
 
 

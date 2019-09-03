@@ -4,20 +4,14 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Route {
-    private Long idRoute;
-    private Stop[]  stops;
+    private Long id;
 
-    public Route(Long idRoute, Stop[] stops) {
-        this.idRoute = idRoute;
-        this.stops = stops;
+    public Route(Long id) {
+        this.id = id;
     }
 
-    public Long getIdRoute() {
-        return idRoute;
-    }
-
-    public Stop[] getStops() {
-        return stops;
+    public Long getId() {
+        return id;
     }
 
     @Override
@@ -25,19 +19,18 @@ public class Route {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Route route = (Route) o;
-        return idRoute.equals(route.idRoute);
+        return id.equals(route.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idRoute);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "Route{" +
-                "idRoute=" + idRoute +
-                ", stops=" + Arrays.toString(stops) +
+                "id=" + id +
                 '}';
     }
 }

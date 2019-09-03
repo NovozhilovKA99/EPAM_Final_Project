@@ -3,26 +3,26 @@ package com.citytransportsystem.dto;
 import java.util.Objects;
 
 public class Model {
-    private Long idModel;
+    private Long id;
     private String description;
-    private Long idType;
+    private Long typeId;
 
-    public Model(Long idModel, String description, Long idType) {
-        this.idModel = idModel;
+    public Model(Long id, String description, Long typeId) {
+        this.id = id;
         this.description = description;
-        this.idType = idType;
+        this.typeId = typeId;
     }
 
-    public Long getIdModel() {
-        return idModel;
+    public Long getId() {
+        return id;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Long getIdType() {
-        return idType;
+    public Long getTypeId() {
+        return typeId;
     }
 
     @Override
@@ -30,19 +30,19 @@ public class Model {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Model model = (Model) o;
-        return idModel.equals(model.idModel);
+        return id.equals(model.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idModel);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "Model{" +
                 ", description='" + description + '\'' +
-                ", idType=" + idType +
+                ", typeId=" + typeId +
                 '}';
     }
 }
