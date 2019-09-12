@@ -1,13 +1,13 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.User;
+import com.citytransportsystem.dto.DB.UserDB;
 
 public interface UserRepository {
-    int create(User user);
+    int create(UserDB userDB);
 
-    User get(Long idUser);
+    UserDB get(Long idUser);
 
-    int update(User user);
+    int update(UserDB userDB);
 
     int delete(Long idUser);
 }

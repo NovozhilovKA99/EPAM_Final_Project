@@ -1,6 +1,6 @@
 package com.citytransportsystem.services;
 
-import com.citytransportsystem.dto.User;
+import com.citytransportsystem.dto.DB.UserDB;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -8,13 +8,13 @@ import org.springframework.web.context.annotation.SessionScope;
 @Service
 public class UserManager {
 
-        private User user;
+        private UserDB userDB;
 
-        public User getUser() {
-            return user;
+        public UserDB getUserDB() {
+            return userDB;
         }
 
-        public void setUser(User user) {
-            this.user = user;
+        public void setUserDB(UserDB userDB) {
+            this.userDB = userDB;
         }
 }

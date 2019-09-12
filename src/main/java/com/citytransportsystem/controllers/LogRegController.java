@@ -1,6 +1,6 @@
 package com.citytransportsystem.controllers;
 
-import com.citytransportsystem.dto.User;
+import com.citytransportsystem.dto.DB.UserDB;
 import com.citytransportsystem.services.UserManager;
 import com.citytransportsystem.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +39,11 @@ public class LogRegController {
     @PostMapping("/login")
     public ModelAndView login(Long idUser, String password) {
         ModelAndView modelAndView = new ModelAndView();
-        User currentUser = userService.checkUser(idUser, password);
-//        if (currentUser != null) {
-//            userManager.setUser(currentUser);
+        UserDB currentUserDB = userService.checkUser(idUser, password);
+//        if (currentUserDB != null) {
+//            userManager.setUserDB(currentUserDB);
 //            modelAndView.setViewName("redirect:/main");
-//            modelAndView.addObject("user", currentUser);
+//            modelAndView.addObject("user", currentUserDB);
 //        } else {
 //            modelAndView.setViewName("login");
 //            modelAndView.addObject("errorMsg", "Логин/Пароль неверен");
@@ -52,7 +52,7 @@ public class LogRegController {
     }
 
     @GetMapping("/registration")
-    public ModelAndView registrationPage(User user) {
+    public ModelAndView registrationPage(UserDB userDB) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("registration");
         return modelAndView;
@@ -61,11 +61,11 @@ public class LogRegController {
     @PostMapping("/registration")
     public ModelAndView registration(Long idUser, String fullName, LocalDate birthday, String position, Long contractId) {
         ModelAndView modelAndView = new ModelAndView();
-        User user = new User(idUser, fullName, birthday, position, contractId);
+        UserDB userDB = new UserDB(idUser, fullName, birthday, position, contractId);
 
         //TODO убрать в userService
-        if (userService.getById(user.getId()) == null){
-            userService.regUser(user);
+        if (userService.getById(userDB.getId()) == null){
+            userService.regUser(userDB);
         } else {
             modelAndView.addObject("errorMsg", "Пользователь с таким ID уже существует");
         }

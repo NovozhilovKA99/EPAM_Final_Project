@@ -1,13 +1,17 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.Stop;
+import com.citytransportsystem.dto.DB.StopDB;
+
+import java.util.List;
 
 public interface StopRepository {
-    int create(Stop stop);
+    int create(StopDB stopDB);
 
-    Stop get(Long idStop);
+    StopDB get(Long idStop);
 
-    int update(Stop stop);
+    int update(StopDB stopDB);
 
     int delete(Long idStop);
+
+    List<StopDB> getByRouteId(Long routeId);
 }

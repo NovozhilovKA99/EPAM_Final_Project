@@ -1,43 +1,48 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.Model;
+import com.citytransportsystem.dto.DB.ModelDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
-import java.util.List;
 
 public class ModelRepositoryImpl implements ModelRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private RowMapper<Model> rowMapper = (rowStr, rowNum) -> new Model(
+    private RowMapper<ModelDB> rowMapper = (rowStr, rowNum) -> new ModelDB(
             rowStr.getLong("id"),
             rowStr.getString("description"),
-            rowStr.getLong("Type_idType")
+            rowStr.getLong("Type_id")
     );
 
     @Override
-    public int create(Model model) {
-        String sql = "insert into 'mydb'.'Model' ('id', 'description', 'Type_idType') values(?, ?, ?)";
-        return jdbcTemplate.update(sql, model.getId(), model.getDescription(), model.getTypeId());
+    public int create(ModelDB modelDB) {
+        String sql = "insert into 'ModelDB' ('id', 'description', 'Type_id') values(?, ?, ?)";
+        return jdbcTemplate.update(sql,
+                modelDB.getId(),
+                modelDB.getDescription(),
+                modelDB.getTypeId()
+        );
     }
 
     @Override
-    public Model get(Long id) {
-        String sql = "select * from 'mydb'.'Model' where 'id' = ?";
-        return jdbcTemplate.queryForObject(sql, Model.class, id);
+    public ModelDB get(Long id) {
+        String sql = "select * from 'ModelDB' where 'id' = ?";
+        return jdbcTemplate.queryForObject(sql, ModelDB.class, id);
     }
 
     @Override
-    public int update(Model model) {
-        String sql = "update model from 'mydb'.'Model' set 'description' = ? where 'id' = ?";
-        return jdbcTemplate.update(sql, model.getDescription(), model.getTypeId());
+    public int update(ModelDB modelDB) {
+        String sql = "update modelDB from 'ModelDB' set 'description' = ? where 'id' = ?";
+        return jdbcTemplate.update(sql,
+                modelDB.getDescription(),
+                modelDB.getTypeId()
+        );
     }
 
     @Override
     public int delete(Long id) {
-        String sql = "delete model from 'mydb'.'Model' where 'id' = ?";
+        String sql = "delete model from 'ModelDB' where 'id' = ?";
         return jdbcTemplate.update(sql, id);
     }
 

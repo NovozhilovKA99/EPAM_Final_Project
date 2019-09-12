@@ -1,13 +1,13 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.Transport;
+import com.citytransportsystem.dto.DB.TransportDB;
 
 public interface TransportRepository {
-    int create(Transport transport);
+    int create(TransportDB transportDB);
 
-    Transport get(Long idTransport);
+    TransportDB get(Long idTransport);
 
-    int update(Transport transport);
+    int update(TransportDB transportDB);
 
     int delete(Long idTransport);
 }

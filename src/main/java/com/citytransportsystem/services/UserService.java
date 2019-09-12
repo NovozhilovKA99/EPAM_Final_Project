@@ -1,15 +1,13 @@
 package com.citytransportsystem.services;
 
-import com.citytransportsystem.dto.User;
-
-import java.util.List;
+import com.citytransportsystem.dto.DB.UserDB;
 
 public interface UserService {
-    User getById(Long idUser);
+    UserDB getById(Long idUser);
 
-    void regUser(User user);
+    void regUser(UserDB userDB);
 
-    User checkUser(Long idUser, String password);
+    UserDB checkUser(Long idUser, String password);
 
-    boolean checkPassword(User user, String password);
+    boolean checkPassword(UserDB userDB, String password);
 }

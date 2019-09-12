@@ -1,13 +1,13 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.Route;
+import com.citytransportsystem.dto.DB.RouteDB;
 
 public interface RouteRepository {
-    int create(Route route);
+    int create(RouteDB routeDB);
 
-    Route get(Long idRoute);
+    RouteDB get(Long idRoute);
 
-    int update(Route route);
+    int update(RouteDB routeDB);
 
     int delete(Long idRoute);
 }

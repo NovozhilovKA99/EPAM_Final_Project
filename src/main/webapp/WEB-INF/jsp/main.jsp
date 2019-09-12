@@ -11,7 +11,7 @@
 <body>
     <c:choose>
         <c: when  test="${user == null}">
-            <div class = "right">
+            <div class = "left">
                 <a href = "/login">Войти</a>
             </div>
             <div class = "center">

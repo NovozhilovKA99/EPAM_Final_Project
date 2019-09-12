@@ -1,7 +1,7 @@
 package com.citytransportsystem.services;
 
+import com.citytransportsystem.dto.DB.UserDB;
 import com.citytransportsystem.repository.jdbc.UserRepository;
-import com.citytransportsystem.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,29 +12,29 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User getById(Long idUser) {
+    public UserDB getById(Long idUser) {
         return userRepository.get(idUser);
     }
 
     @Override
-    public void regUser(User user) {
-        userRepository.create(user);
+    public void regUser(UserDB userDB) {
+        userRepository.create(userDB);
     }
 
     //TODO RSA encryption
     @Override
-    public boolean checkPassword(User user, String password){
+    public boolean checkPassword(UserDB userDB, String password){
         return true;
     }
 
     @Override
-    public User checkUser(Long idUser, String password) {
-        User currentUser = userRepository.get(idUser);
+    public UserDB checkUser(Long idUser, String password) {
+        UserDB currentUserDB = userRepository.get(idUser);
         if (
-                currentUser != null
-                        && checkPassword(currentUser, password)
+                currentUserDB != null
+                        && checkPassword(currentUserDB, password)
         ) {
-            return currentUser;
+            return currentUserDB;
         } else {
             return null;
         }

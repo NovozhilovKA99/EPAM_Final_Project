@@ -1,13 +1,13 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.Type;
+import com.citytransportsystem.dto.DB.TypeDB;
 
 public interface TypeRepository {
-    int create(Type type);
+    int create(TypeDB typeDB);
 
-    Type get(Long idType);
+    TypeDB get(Long idType);
 
-    int update(Type type);
+    int update(TypeDB typeDB);
 
     int delete(Long idType);
 }
