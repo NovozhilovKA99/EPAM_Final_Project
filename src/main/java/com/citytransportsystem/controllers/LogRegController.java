@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDate;
 
 @RestController
 public class LogRegController {
@@ -58,11 +56,9 @@ public class LogRegController {
     @PostMapping("/registration")
     public ModelAndView registration(User user) {
         ModelAndView modelAndView = new ModelAndView();
-        //TODO убрать в userService
         if (userService.checkUnique(user)){
             userService.regUser(user);
         }
-
         return modelAndView;
     }
 }

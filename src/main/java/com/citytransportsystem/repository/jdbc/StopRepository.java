@@ -14,4 +14,6 @@ public interface StopRepository {
     int delete(Long idStop);
 
     List<Stop> getByRouteId(Long routeId);
+
+    List<Stop> getByRouteId(Long routeId, Long direction);
 }

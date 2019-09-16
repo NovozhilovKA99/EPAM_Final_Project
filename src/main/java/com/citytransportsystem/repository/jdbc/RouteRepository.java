@@ -2,6 +2,8 @@ package com.citytransportsystem.repository.jdbc;
 
 import com.citytransportsystem.dto.DB.RouteDB;
 
+import java.util.List;
+
 public interface RouteRepository {
     int create(RouteDB routeDB);
 
@@ -10,4 +12,6 @@ public interface RouteRepository {
     int update(RouteDB routeDB);
 
     int delete(Long idRoute);
+
+    List<RouteDB> get();
 }
