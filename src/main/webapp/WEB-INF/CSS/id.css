@@ -1,0 +1,14 @@
+@import "headfoot.css";
+@import "base.css";
+
+.body{
+    align-items: center;
+}
+
+.route-table{
+    color: black;
+}
+
+tbody{
+    display: table-row-group;
+}

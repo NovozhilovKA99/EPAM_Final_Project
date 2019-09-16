@@ -1,6 +1,6 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.DB.UserDB;
+import com.citytransportsystem.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -13,46 +13,52 @@ public class UserRepositoryImpl implements UserRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//    @Autowired
-    private DateTimeFormatter dateTimeFormatter;
-
-    private RowMapper<UserDB> rowMapper = (rowStr, rowNum) -> new UserDB(
+    private RowMapper<User> rowMapper = (rowStr, rowNum) -> new User(
             rowStr.getLong("id"),
+            rowStr.getString("login"),
             rowStr.getString("fullName"),
-            LocalDate.parse(rowStr.getString("birthday"), dateTimeFormatter),
+            rowStr.getDate("birthday").toLocalDate(),
             rowStr.getString("position"),
-            rowStr.getLong("contractId")
+            rowStr.getLong("contractId"),
+            rowStr.getString("password")
     );
 
     @Override
-    public int create(UserDB userDB) {
-        String sql = "insert into 'userDB' ('id', 'fullName', 'birthday', 'position, 'contractId') " +
-                "VALUES (?, ?, ?, ?, ?)";
+    public int create(User user) {
+        String sql = "insert into 'user' ('fullName', 'birthday', " +
+                "'position, 'contractId', 'login', 'password') " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql,
-                userDB.getId(),
-                userDB.getFullName(),
-                userDB.getBirthday(),
-                userDB.getPosition(),
-                userDB.getContractId()
+                user.getFullName(),
+                user.getBirthday(),
+                user.getPosition(),
+                user.getContractId(),
+                user.getLogin(),
+                user.getPassword()
         );
     }
 
     @Override
-    public UserDB get(Long id){
-        String sql = "Select 'id', 'fullName', 'birthday', 'position, 'contractId' from 'user' where id = ?";
-        return jdbcTemplate.queryForObject(sql, UserDB.class, id);
+    public User get(Long id){
+        String sql = "Select 'id', 'fullName', 'birthday', 'position, 'contractId', 'login', 'password' from 'user' where id = ?";
+        return jdbcTemplate.queryForObject(sql, User.class, id);
     }
 
     @Override
-    public int update(UserDB userDB){
-        String sql = "update userDB from 'userDB' set 'fullName' = ?, 'birthday' = ?, 'position' = ?, 'contractId' = ? " +
+    public int update(User user){
+        String sql = "update user from 'user' set " +
+                "'fullName' = ?, 'birthday' = ?, 'position' = ?, " +
+                "'contractId' = ?, login = ?, password = ? " +
                 "where 'id' = ?";
         return jdbcTemplate.update(sql,
-                userDB.getFullName(),
-                userDB.getBirthday(),
-                userDB.getPosition(),
-                userDB.getContractId(),
-                userDB.getId());
+                user.getFullName(),
+                user.getBirthday(),
+                user.getPosition(),
+                user.getContractId(),
+                user.getLogin(),
+                user.getPassword(),
+                user.getId()
+        );
     }
 
     @Override

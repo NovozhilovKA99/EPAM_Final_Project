@@ -1,0 +1,37 @@
+@import "base.css";
+@import "headfoot.css";
+
+.center{
+    max-width: 400px;
+}
+
+.input-text-wrap{
+    border-radius: 6px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-text{
+    font-size: 100%;
+    min-height: 30px;
+    display: block;
+    border:2px solid #FF9B73;
+    border-radius: 3pt;
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+}
+
+
+button{
+    display: block;
+    color: white;
+    background-color: orangered;
+    height: 25px;
+    width: 80%;
+    min-width: 60px;
+    max-width: 150px;
+    margin: 10px;
+    margin: auto;
+}
+

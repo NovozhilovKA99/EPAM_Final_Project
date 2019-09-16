@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    color: wheat;
+    background-color: wheat;
+    margin: 0px;
+    /*background-image: linear-gradient(black, darkcyan);*/
+}
+
+.center{
+    margin: auto;
+    min-width: 400px;
+    max-width: 1000px;
+    border-color: black;
+    padding: 10px;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    font-size: 24pt;
+    margin: auto;
+}

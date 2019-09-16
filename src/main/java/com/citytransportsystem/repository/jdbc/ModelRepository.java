@@ -1,13 +1,13 @@
 package com.citytransportsystem.repository.jdbc;
 
-import com.citytransportsystem.dto.DB.ModelDB;
+import com.citytransportsystem.dto.Model;
 
 public interface ModelRepository {
-    int create(ModelDB modelDB);
+    int create(Model model);
 
-    ModelDB get(Long idModel);
+    Model get(Long idModel);
 
-    int update(ModelDB modelDB);
+    int update(Model model);
 
     int delete(Long idModel);
 }
