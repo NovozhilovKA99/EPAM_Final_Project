@@ -5,7 +5,7 @@
 <html>
     <head>
         <title>Маршрут №1</title>
-        <link href="../css/id.css" rel="stylesheet" type="text/css"><meta charset="utf-8"/>
+        <link href="../CSS/id.css" rel="stylesheet" type="text/css"><meta charset="utf-8"/>
     </head>
 
     <body>

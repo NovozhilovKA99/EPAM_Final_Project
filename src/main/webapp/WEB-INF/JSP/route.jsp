@@ -5,7 +5,7 @@
 <html>
     <head>
         <title>Маршруты</title>
-        <link href="../css/routes.css" rel="stylesheet" type="text/css"><meta charset="utf-8"/>
+        <link href="../CSS/routes.css" rel="stylesheet" type="text/css"><meta charset="utf-8"/>
     </head>
 
     <body>
