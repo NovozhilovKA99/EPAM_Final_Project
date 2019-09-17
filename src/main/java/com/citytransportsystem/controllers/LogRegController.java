@@ -37,7 +37,7 @@ public class LogRegController {
     @PostMapping("/login")
     public ModelAndView login(Long idUser, String password) {
         ModelAndView modelAndView = new ModelAndView();
-        if (userService.setUser(idUser, password)) {
+        if (userService.authUser(idUser, password)) {
             modelAndView.setViewName("redirect:/main");
         }
         else{

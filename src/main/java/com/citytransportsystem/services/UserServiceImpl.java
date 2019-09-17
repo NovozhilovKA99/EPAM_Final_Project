@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean setUser(Long idUser, String password) {
+    public boolean authUser(Long idUser, String password) {
         User currentUser = userRepository.get(idUser);
         if(checkPassword(currentUser, password)){
             userManagerImpl.setUser(currentUser);
