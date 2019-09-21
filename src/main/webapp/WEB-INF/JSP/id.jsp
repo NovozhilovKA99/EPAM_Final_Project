@@ -10,19 +10,24 @@
 
     <body>
         <div class="header">
-            <div class="item"></div>
+            <div class="item"><a href="/route">Главная</div>
             <div class="item-center">Something to do with the transport company</div>
-            <div class="item"></div>
+            <div class="item"><a href="/logout">Выход</a></div>
         </div>
         <div class="center">
             <table width=100%>
                 <tbody>
                     <tr>
                         <td width=50%>
-                            <table class="route-table">
+                            <table class="route-table" color="black">
                                 <tbody>
-                                    <c:forEach var="stop" items="${route-forward}">
-                                        <div>${stop.name}</div>
+                                    <c:forEach var="stop" items="${routeForward}">
+                                        <tr>
+                                            <td>${stop.name}</td>
+                                            <td>${stop.indexRoute}</td>
+                                            <td>
+                                            </td>
+                                        </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
@@ -30,8 +35,13 @@
                         <td width=50%>
                             <table class="route-table">
                                 <tbody>
-                                    <c:forEach var="stop" items="${route-back}">
-                                        <div>${stop.name}</div>
+                                    <c:forEach var="stop" items="${routeBack}">
+                                        <tr>
+                                            <td>${stop.name}</td>
+                                            <td>${stop.indexRoute}</td>
+                                            <td>
+                                            </td>
+                                        </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>

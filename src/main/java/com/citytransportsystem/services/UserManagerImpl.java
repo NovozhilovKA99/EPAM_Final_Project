@@ -17,4 +17,8 @@ public class UserManagerImpl implements UserManager {
         public void setUser(User user) {
             this.user = user;
         }
+
+        public Boolean authorised(){
+            return user == null;
+        }
 }

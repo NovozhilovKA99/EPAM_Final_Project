@@ -7,7 +7,7 @@ public interface UserService {
 
     void regUser(User user);
 
-    boolean authUser(Long idUser, String password);
+    boolean authUser(String login, String password);
 
     boolean checkPassword(User user, String password);
 

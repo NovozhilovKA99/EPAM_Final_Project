@@ -7,6 +7,8 @@ public interface UserRepository {
 
     User get(Long idUser);
 
+    User get(String login);
+
     int update(User user);
 
     int delete(Long idUser);

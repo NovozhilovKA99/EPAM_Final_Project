@@ -41,7 +41,7 @@ public class RouteRepositoryImpl implements RouteRepository {
 
     @Override
     public List<RouteDB> get() {
-        String sql = "Select 'id', 'number' from 'Route'";
+        String sql = "Select `id`, `number` from `Route`";
         return jdbcTemplate.query(sql, rowMapper);
     }
 }

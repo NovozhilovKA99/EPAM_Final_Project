@@ -3,6 +3,7 @@ package com.citytransportsystem.repository.jdbc;
 import com.citytransportsystem.dto.DB.CastDB;
 import com.citytransportsystem.dto.User;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface CastRepository {
@@ -15,4 +16,6 @@ public interface CastRepository {
     int update(CastDB castDB);
 
     int delete(Long idCast);
+
+    List<CastDB> getStartedCasts(LocalDateTime now);
 }

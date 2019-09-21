@@ -3,29 +3,33 @@ package com.citytransportsystem.services;
 import com.citytransportsystem.dto.Route;
 import com.citytransportsystem.dto.Stop;
 import com.citytransportsystem.dto.Transport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class PositionServiceImpl implements PositionService {
 
-    Map<Long, List<Transport>> transportOnRoute;
+    private Map<Long, Set<Transport>> transportOnRoute;
 
     public PositionServiceImpl() {
-        this.transportOnRoute = new HashMap<Long, List<Transport>>();
+        this.transportOnRoute = new HashMap<Long, Set<Transport>>();
     }
 
-    //TODO Multi value map
     @Override
     public Map<Stop, Transport> getOnRoute(Long routeId) {
-        return transportOnRoute.get(routeId).stream().;
+        return new HashMap<>();
     }
 
     @Override
     public Boolean addTransport(Transport transport, Long routeId) {
-        return transportOnRoute.get(routeId).add(transport);
+        if(transportOnRoute.get(routeId) != null){
+            return transportOnRoute.get(routeId).add(transport);
+        }
+        else{
+            transportOnRoute.put(routeId, new HashSet<Transport>(Arrays.asList(transport)));
+            return true;
+        }
     }
 }

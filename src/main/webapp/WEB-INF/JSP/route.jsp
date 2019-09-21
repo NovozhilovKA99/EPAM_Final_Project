@@ -17,7 +17,7 @@
         <div class="center">
             <div class="grid">
                 <c:forEach var="route" items="${routes}">
-                    <div><a href="/route/${route.number}">${route.number}</a></div>
+                    <div class="grid-cell"><a href="/route/${route.number}">${route.number}</a></div>
                 </c:forEach>
             </div>
         </div>

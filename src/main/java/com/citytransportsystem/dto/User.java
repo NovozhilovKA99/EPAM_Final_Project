@@ -12,6 +12,16 @@ public class User {
     private Long contractId;
     private String password;
 
+    public User(){
+        this.id = null;
+        this.login = null;
+        this.fullName = null;
+        this.birthday = null;
+        this.position = null;
+        this.contractId = null;
+        this.password = null;
+    }
+
     public User(Long id, String login, String fullName, LocalDate birthday, String position, Long contractId, String password) {
         this.id = id;
         this.login = login;
@@ -35,6 +45,18 @@ public class User {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getFullName() {
         return fullName;
     }
@@ -45,6 +67,10 @@ public class User {
 
     public LocalDate getBirthday() {
         return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public String getPosition() {
@@ -59,16 +85,16 @@ public class User {
         return contractId;
     }
 
+    public void setContractId(Long contractId) {
+        this.contractId = contractId;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getLogin() {
-        return login;
     }
 
     @Override

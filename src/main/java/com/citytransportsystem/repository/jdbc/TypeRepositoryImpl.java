@@ -18,7 +18,7 @@ public class TypeRepositoryImpl implements TypeRepository {
 
     @Override
     public int create(Type type) {
-        String sql = "insert into 'Type' ('description') VALUES (?, ?)";
+        String sql = "insert into `Type` (`description`) VALUES (?, ?)";
         return jdbcTemplate.update(sql,
                 type.getDescription()
         );
@@ -26,13 +26,13 @@ public class TypeRepositoryImpl implements TypeRepository {
 
     @Override
     public Type get(Long id) {
-        String sql = "select 'id', 'description' 'Type' where 'id' = ?";
+        String sql = "select `id`, `description` `Type` where `id` = ?";
         return jdbcTemplate.queryForObject(sql, Type.class, id);
     }
 
     @Override
     public int update(Type type) {
-        String sql = "update type from 'Type' set 'description' = ? where 'id' = ?";
+        String sql = "update type from `Type` set `description` = ? where `id` = ?";
         return jdbcTemplate.update(sql,
                 type.getDescription(),
                 type.getId()
@@ -41,7 +41,7 @@ public class TypeRepositoryImpl implements TypeRepository {
 
     @Override
     public int delete(Long id) {
-        String sql = "delete type from 'Type' where 'id' = ?";
+        String sql = "delete type from `Type` where `id` = ?";
         return jdbcTemplate.update(sql, id);
     }
 }

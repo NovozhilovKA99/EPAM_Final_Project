@@ -12,7 +12,7 @@
         <div class="header">
             <div class="item"></div>
             <div class="item-center">Something to do with the transport company</div>
-            <div class="item">Выход</div>
+            <div class="item"><a href="/logout">Выход</a></div>
         </div>
     <div class = "center">
         <table>

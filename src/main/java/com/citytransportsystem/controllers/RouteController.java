@@ -44,9 +44,9 @@ public class RouteController {
         List<Stop> routeBack = new ArrayList<Stop>();
         Boolean back = false;
         for (Stop stop : route){
-            if (back){
+            if (!back){
                 routeForward.add(stop);
-                back = stop.isEnd();
+                back = back || stop.isEnd();
             }
             else{
                 routeBack.add(stop);

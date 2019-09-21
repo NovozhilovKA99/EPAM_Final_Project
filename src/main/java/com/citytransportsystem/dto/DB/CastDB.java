@@ -22,6 +22,15 @@ public class CastDB {
         this.endTime = endTime;
     }
 
+    public CastDB(Long driverId, Long conductorId, Long routeId, Long transportId, LocalDateTime startTime, LocalDateTime endTime) {
+        this.driverId = driverId;
+        this.conductorId = conductorId;
+        this.routeId = routeId;
+        this.transportId = transportId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public Long getId() {
         return id;
     }

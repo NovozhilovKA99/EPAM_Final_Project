@@ -5,8 +5,6 @@ import com.citytransportsystem.repository.jdbc.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -43,8 +41,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean authUser(Long idUser, String password) {
-        User currentUser = userRepository.get(idUser);
+    public boolean authUser(String login, String password) {
+        User currentUser = userRepository.get(login);
         if(checkPassword(currentUser, password)){
             userManagerImpl.setUser(currentUser);
             return true;

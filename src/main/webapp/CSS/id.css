@@ -7,8 +7,15 @@
 
 .route-table{
     color: black;
+    margin: auto;
+}
+
+.route-cell{
+    color: black;
 }
 
 tbody{
     display: table-row-group;
+    color: black;
 }
+

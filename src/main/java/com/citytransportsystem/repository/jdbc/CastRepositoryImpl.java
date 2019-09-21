@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -26,9 +27,9 @@ public class CastRepositoryImpl implements CastRepository {
 
     @Override
     public int create(CastDB castDB) {
-        String sql = "insert into 'Cast' " +
-                "('User_idDriver', 'User_idConductor', 'Route_id', 'Transport_id', 'startTime', 'endTime') " +
-                " where values(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into `Cast` " +
+                "(`User_idDriver`, `User_idConductor`, `Route_id`, `Transport_id`, `startTime`, `endTime`) " +
+                " where values(?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql,
                 castDB.getDriverId(),
                 castDB.getConductorId(),
@@ -41,24 +42,24 @@ public class CastRepositoryImpl implements CastRepository {
 
     @Override
     public CastDB get(Long idCast) {
-        String sql = "select 'id', 'User_idDriver', 'User_idConductor', 'Route_id', " +
-                "'Transport_id', 'startTime', 'endTime'" +
-                "from 'Cast' where 'id' = ?";
+        String sql = "select `id`, `User_idDriver`, `User_idConductor`, `Route_id`, " +
+                "`Transport_id`, `startTime`, `endTime`" +
+                "from `Cast` where `id` = ?";
         return jdbcTemplate.queryForObject(sql, CastDB.class, idCast);
     }
 
     @Override
     public List<CastDB> getCastByUserId(Long userId) {
-        String sql = "select 'id', 'User_idDriver', 'User_idConductor', 'Route_id', " +
-                "'Transport_id', 'startTime', 'endTime'  from 'Cast' where User_idDriver = ? or User_idConductor = ?";
+        String sql = "select `id`, `User_idDriver`, `User_idConductor`, `Route_id`, " +
+                "`Transport_id`, `startTime`, `endTime`  from `Cast` where User_idDriver = ? or User_idConductor = ?";
         return jdbcTemplate.query(sql, rowMapper, userId, userId);
     }
 
     @Override
     public int update(CastDB castDB) {
-        String sql = "update cast from 'Cast' where 'id' = ? set " +
-                "'User_idDriver' = ? 'User_idConductor' = ? " +
-                "'Route_id' = ? 'Transport_id' = ? 'startTime' = ? 'endTime' = ?";
+        String sql = "update cast from `Cast` where `id` = ? set " +
+                "`User_idDriver` = ? `User_idConductor` = ? " +
+                "`Route_id` = ? `Transport_id` = ? `startTime` = ? `endTime` = ?";
         return jdbcTemplate.update(sql,
                 castDB.getId(),
                 castDB.getDriverId(),
@@ -72,7 +73,12 @@ public class CastRepositoryImpl implements CastRepository {
 
     @Override
     public int delete(Long idCast) {
-        String sql = "delete cast from 'Cast' where 'id' = ?";
+        String sql = "delete cast from `Cast` where `id` = ?";
         return jdbcTemplate.update(sql, idCast);
+    }
+
+    @Override
+    public List<CastDB> getStartedCasts(LocalDateTime now) {
+        return null;
     }
 }

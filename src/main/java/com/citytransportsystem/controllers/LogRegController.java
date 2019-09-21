@@ -35,10 +35,10 @@ public class LogRegController {
     }
 
     @PostMapping("/login")
-    public ModelAndView login(Long idUser, String password) {
+    public ModelAndView login(String login, String password) {
         ModelAndView modelAndView = new ModelAndView();
-        if (userService.authUser(idUser, password)) {
-            modelAndView.setViewName("redirect:/main");
+        if (userService.authUser(login, password)) {
+            modelAndView.setViewName("redirect:/home");
         }
         else{
             modelAndView.setViewName("login");
@@ -47,7 +47,7 @@ public class LogRegController {
     }
 
     @GetMapping("/registration")
-    public ModelAndView registrationPage(User user) {
+    public ModelAndView registrationPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("registration");
         return modelAndView;

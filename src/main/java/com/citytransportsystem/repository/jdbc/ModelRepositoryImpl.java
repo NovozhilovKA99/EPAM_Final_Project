@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Random;
+
 @Repository
 public class ModelRepositoryImpl implements ModelRepository {
     @Autowired
@@ -19,7 +21,7 @@ public class ModelRepositoryImpl implements ModelRepository {
 
     @Override
     public int create(Model model) {
-        String sql = "insert into 'Model' ('description', 'Type_id') values(?, ?, ?)";
+        String sql = "insert into `Model` (`description`, `Type_id`) values(?, ?)";
         return jdbcTemplate.update(sql,
                 model.getDescription(),
                 model.getTypeId()
@@ -28,13 +30,13 @@ public class ModelRepositoryImpl implements ModelRepository {
 
     @Override
     public Model get(Long id) {
-        String sql = "select * from 'Model' where 'id' = ?";
+        String sql = "select * from `Model` where `id` = ?";
         return jdbcTemplate.queryForObject(sql, Model.class, id);
     }
 
     @Override
     public int update(Model model) {
-        String sql = "update model from 'Model' set 'description' = ? where 'id' = ?";
+        String sql = "update model from `Model` set `description` = ? where `id` = ?";
         return jdbcTemplate.update(sql,
                 model.getDescription(),
                 model.getTypeId()
@@ -43,7 +45,7 @@ public class ModelRepositoryImpl implements ModelRepository {
 
     @Override
     public int delete(Long id) {
-        String sql = "delete model from 'Model' where 'id' = ?";
+        String sql = "delete model from `Model` where `id` = ?";
         return jdbcTemplate.update(sql, id);
     }
 
