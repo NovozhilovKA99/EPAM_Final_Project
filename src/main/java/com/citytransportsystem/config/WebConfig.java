@@ -1,7 +1,7 @@
-package com.citytransportsystem.Config;
+package com.citytransportsystem.config;
 
-import com.citytransportsystem.Interseptors.RoleInterceptor;
-import com.citytransportsystem.Interseptors.AuthInterceptor;
+import com.citytransportsystem.Interseptor.RoleInterceptor;
+import com.citytransportsystem.Interseptor.AuthInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;

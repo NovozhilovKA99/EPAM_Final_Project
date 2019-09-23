@@ -1,15 +1,24 @@
 package com.citytransportsystem.dto;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Valid
 public class User {
     private Long id;
+    @NotNull
+    @Size(min = 3, message = "Длина логина больше 3 символов")
     private String login;
     private String fullName;
     private LocalDate birthday;
     private String position;
     private Long contractId;
+    @NotNull
+    @Size(min = 6)
     private String password;
 
     public User(){

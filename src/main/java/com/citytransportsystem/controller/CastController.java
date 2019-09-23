@@ -1,10 +1,12 @@
-package com.citytransportsystem.controllers;
+package com.citytransportsystem.controller;
 
 import com.citytransportsystem.dto.Cast;
 import com.citytransportsystem.dto.DB.CastDB;
-import com.citytransportsystem.services.CastService;
-import com.citytransportsystem.services.UserManager;
+import com.citytransportsystem.service.CastService;
+import com.citytransportsystem.service.UserManager;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("home")
 public class CastController {
@@ -38,10 +41,9 @@ public class CastController {
     }
 
     @PostMapping("/add")
-    ModelAndView getCast(ModelAndView modelAndView, CastDB cast){
+    ModelAndView getCast(ModelAndView modelAndView, @Validated CastDB cast){
         modelAndView.setViewName("redirect:/home");
         castService.insert(cast);
-        //Comment
         return modelAndView;
     }
 }

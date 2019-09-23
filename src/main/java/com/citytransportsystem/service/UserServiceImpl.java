@@ -1,10 +1,12 @@
-package com.citytransportsystem.services;
+package com.citytransportsystem.service;
 
 import com.citytransportsystem.dto.User;
 import com.citytransportsystem.repository.jdbc.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
 

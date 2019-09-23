@@ -1,13 +1,11 @@
-package com.citytransportsystem.Interseptors;
+package com.citytransportsystem.Interseptor;
 
-import com.citytransportsystem.dto.User;
-import com.citytransportsystem.services.UserManager;
+import com.citytransportsystem.service.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Objects;
 
 public class AuthInterceptor implements HandlerInterceptor {
 

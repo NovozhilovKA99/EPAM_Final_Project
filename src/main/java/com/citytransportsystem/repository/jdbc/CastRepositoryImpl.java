@@ -1,6 +1,7 @@
 package com.citytransportsystem.repository.jdbc;
 
 import com.citytransportsystem.dto.DB.CastDB;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -9,6 +10,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Repository
 public class CastRepositoryImpl implements CastRepository {
 
@@ -79,6 +81,8 @@ public class CastRepositoryImpl implements CastRepository {
 
     @Override
     public List<CastDB> getStartedCasts(LocalDateTime now) {
-        return null;
+        String sql = "select `id`, `User_idDriver`, `User_idConductor`, `Route_id`, " +
+        "`Transport_id`, `startTime`, `endTime`  from `Cast` where startTime between ? and ?";
+        return jdbcTemplate.query(sql, rowMapper, now, now.plusSeconds(61));
     }
 }

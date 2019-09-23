@@ -1,6 +1,5 @@
-package com.citytransportsystem.services;
+package com.citytransportsystem.service;
 
-import com.citytransportsystem.dto.Route;
 import com.citytransportsystem.dto.Stop;
 import com.citytransportsystem.dto.Transport;
 

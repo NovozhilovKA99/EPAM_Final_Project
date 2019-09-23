@@ -26,6 +26,10 @@
                                             <td>${stop.name}</td>
                                             <td>${stop.indexRoute}</td>
                                             <td>
+                                                <c:if condition="${transport.get(stop)!=null}">
+                                                    Транспорт
+                                                </c:if>
+
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -40,6 +44,9 @@
                                             <td>${stop.name}</td>
                                             <td>${stop.indexRoute}</td>
                                             <td>
+                                                <c:if condition="${transport.get(stop)!=null}">
+                                                    Транспорт
+                                                </c:if>
                                             </td>
                                         </tr>
                                     </c:forEach>

@@ -1,12 +1,14 @@
 package com.citytransportsystem.repository.jdbc;
 
 import com.citytransportsystem.dto.Stop;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
+@Slf4j
 @Repository
 public class StopRepositoryImpl implements StopRepository {
     @Autowired
@@ -60,5 +62,10 @@ public class StopRepositoryImpl implements StopRepository {
         String sql = "select `id`, `name`, `route_Id`, `indexRoute`, `end` " +
                 "from `Stop` where `route_Id` = ? order by `indexRoute` asc";
         return jdbcTemplate.query(sql, rowMapper, routeId);
+    }
+
+    @Override
+    public Stop getFirstStopForRoute(Long routeId) {
+        return null;
     }
 }

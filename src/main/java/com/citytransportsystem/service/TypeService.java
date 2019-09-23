@@ -1,4 +1,4 @@
-package com.citytransportsystem.services;
+package com.citytransportsystem.service;
 
 import com.citytransportsystem.dto.Type;
 

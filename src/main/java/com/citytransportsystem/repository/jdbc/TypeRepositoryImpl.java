@@ -1,11 +1,13 @@
 package com.citytransportsystem.repository.jdbc;
 
 import com.citytransportsystem.dto.Type;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+@Slf4j
 @Repository
 public class TypeRepositoryImpl implements TypeRepository {
     @Autowired

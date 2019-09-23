@@ -1,13 +1,13 @@
-package com.citytransportsystem.services;
+package com.citytransportsystem.service;
 
-import com.citytransportsystem.dto.Route;
 import com.citytransportsystem.dto.Stop;
 import com.citytransportsystem.dto.Transport;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Slf4j
 @Service
 public class PositionServiceImpl implements PositionService {
 

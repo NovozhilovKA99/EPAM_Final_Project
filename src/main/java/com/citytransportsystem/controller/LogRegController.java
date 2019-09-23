@@ -1,8 +1,9 @@
-package com.citytransportsystem.controllers;
+package com.citytransportsystem.controller;
 
 import com.citytransportsystem.dto.User;
-import com.citytransportsystem.services.UserManager;
-import com.citytransportsystem.services.UserService;
+import com.citytransportsystem.service.UserManager;
+import com.citytransportsystem.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @RestController
 public class LogRegController {
 

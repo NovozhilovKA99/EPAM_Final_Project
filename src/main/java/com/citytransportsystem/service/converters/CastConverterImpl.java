@@ -1,4 +1,4 @@
-package com.citytransportsystem.services.converters;
+package com.citytransportsystem.service.converters;
 
 import com.citytransportsystem.dto.*;
 import com.citytransportsystem.dto.DB.CastDB;
