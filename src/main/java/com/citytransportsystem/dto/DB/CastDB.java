@@ -1,24 +1,42 @@
 package com.citytransportsystem.dto.DB;
 
-import javax.validation.constraints.FutureOrPresent;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Valid
 public class CastDB {
+
     private Long id;
-    @NotNull
+
+    @NotNull(message = "Водитель должен быть указан")
     private Long driverId;
-    @NotNull
+
+    @NotNull(message = "Кондуктор должен быть указан")
     private Long conductorId;
-    @NotNull
+
+    @NotNull(message = "Маршрут должен быть указан")
     private Long routeId;
-    @NotNull
+
+    @NotNull(message = "Транспорт должен быть указан")
     private Long transportId;
-    @FutureOrPresent
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @NotNull(message = "Начало смены должно быть указано")
+    @Future(message = "Начало смены должно быть позже текущего момента")
     private LocalDateTime startTime;
-    @FutureOrPresent
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @NotNull(message = "Конец смены должен быть указан")
+    @Future(message = "Конец смены должен быть позже текущего момента")
     private LocalDateTime endTime;
+
+    public CastDB(){
+    }
 
     public CastDB(Long id, Long driverId, Long conductorId,
                   Long routeId, Long transportId,

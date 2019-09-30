@@ -28,7 +28,8 @@ public class RouteRepositoryImpl implements RouteRepository {
 
     @Override
     public RouteDB get(Long idRoute) {
-        return null;
+        String sql = "Select `id`, `number` from `Route` where `id` = ?";
+        return jdbcTemplate.queryForObject(sql, rowMapper, idRoute);
     }
 
     @Override

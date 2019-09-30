@@ -2,10 +2,15 @@ package com.citytransportsystem.controller;
 
 import com.citytransportsystem.dto.Cast;
 import com.citytransportsystem.dto.DB.CastDB;
+import com.citytransportsystem.exception.RouteException;
+import com.citytransportsystem.exception.TransportException;
+import com.citytransportsystem.exception.UserException;
 import com.citytransportsystem.service.CastService;
 import com.citytransportsystem.service.UserManager;
+import jdk.jshell.spi.ExecutionControl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +36,7 @@ public class CastController {
         modelAndView.setViewName("home");
         List<Cast> casts = castService.getCastByUser(userManager.getUser());
         modelAndView.addObject(casts);
+        modelAndView.addObject("user", userManager.getUser());
         return modelAndView;
     }
 
@@ -41,9 +47,20 @@ public class CastController {
     }
 
     @PostMapping("/add")
-    ModelAndView getCast(ModelAndView modelAndView, @Validated CastDB cast){
-        modelAndView.setViewName("redirect:/home");
-        castService.insert(cast);
+    ModelAndView getCast(ModelAndView modelAndView, @Validated CastDB cast, BindingResult result){
+        modelAndView.setViewName("add");
+        if(result.hasErrors()) {
+            modelAndView.addObject("errorMsg", result.getAllErrors());
+        }else{
+            try {
+                castService.insert(cast);
+            }
+            catch (UserException | TransportException | RouteException exc){
+                modelAndView.addObject("excMsg", exc.getMessage());
+                return modelAndView;
+            }
+            modelAndView.addObject("excMsg", "Успешно добавлено");
+        }
         return modelAndView;
     }
 }

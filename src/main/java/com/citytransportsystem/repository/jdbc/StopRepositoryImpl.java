@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class StopRepositoryImpl implements StopRepository {
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     private RowMapper<Stop> rowMapper = (rowStr, rowNum) -> new Stop(
             rowStr.getLong("id"),
@@ -36,7 +36,7 @@ public class StopRepositoryImpl implements StopRepository {
     @Override
     public Stop get(Long id){
         String sql = "select `id`, `name`, `route_Id`, `direction` from `Stop` where id = ?";
-        return jdbcTemplate.queryForObject(sql, Stop.class, id);
+        return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
     @Override
@@ -66,6 +66,14 @@ public class StopRepositoryImpl implements StopRepository {
 
     @Override
     public Stop getFirstStopForRoute(Long routeId) {
-        return null;
+        String sql = "select `id`, `name`, `route_Id`, `indexRoute`, `end` " +
+                "from `Stop` where `route_Id` = ? and `indexRoute` = 0";
+        return jdbcTemplate.queryForObject(sql, rowMapper, routeId);
     }
+
+    @Override
+    public Stop getNextStop(Stop stop){
+        String sql = "";
+        return jdbcTemplate.queryForObject(sql, rowMapper);
+    };
 }

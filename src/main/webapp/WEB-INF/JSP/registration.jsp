@@ -10,7 +10,7 @@
 
     <body>
         <div class="header">
-            <div class="item"><a href="/home">Главная</div>
+            <a href="/home"><div class="item">Главная</div></a>
             <div class="item-center">Регистрация</div>
             <div class="item"></div>
         </div>
@@ -27,6 +27,9 @@
                         <option>Водитель</option>
                     </select>
                 </div>
+                <c:forEach var="error" items="${errorMsg}">
+                    <div>"${error.defaultMessage}"</div>
+                </c:forEach>
                 <button>Register</button>
             </form>
         </div>

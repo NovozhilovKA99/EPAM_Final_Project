@@ -16,4 +16,6 @@ public interface StopRepository {
     List<Stop> getByRouteId(Long routeId);
 
     Stop getFirstStopForRoute(Long routeId);
+
+    Stop getNextStop(Stop stop);
 }

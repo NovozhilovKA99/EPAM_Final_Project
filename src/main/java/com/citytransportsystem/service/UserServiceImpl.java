@@ -28,6 +28,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkUnique(User user) {
+        try {
+            userRepository.get(user.getLogin());
+        }
+        catch (Exception ex){
+            return false;
+        }
         return true;
     }
 
@@ -39,12 +45,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkPassword(User user, String password) {
-        return user.getPassword().equals(password);
+        return user.getPassword().equals(hash(password));
     }
 
     @Override
     public boolean authUser(String login, String password) {
-        User currentUser = userRepository.get(login);
+        User currentUser;
+        try {
+            currentUser = userRepository.get(login);
+        }
+        catch (Exception exc){
+            return false;
+        }
         if(checkPassword(currentUser, password)){
             userManagerImpl.setUser(currentUser);
             return true;

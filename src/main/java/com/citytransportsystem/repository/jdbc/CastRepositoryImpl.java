@@ -1,6 +1,8 @@
 package com.citytransportsystem.repository.jdbc;
 
 import com.citytransportsystem.dto.DB.CastDB;
+import com.citytransportsystem.dto.Transport;
+import com.citytransportsystem.dto.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,11 +29,13 @@ public class CastRepositoryImpl implements CastRepository {
             rowStr.getTimestamp("endTime").toLocalDateTime()
     );
 
+    private RowMapper<Long> longRowMapper = (rowStr, rowNum) -> rowStr.getLong("id");
+
     @Override
     public int create(CastDB castDB) {
         String sql = "insert into `Cast` " +
                 "(`User_idDriver`, `User_idConductor`, `Route_id`, `Transport_id`, `startTime`, `endTime`) " +
-                " where values(?, ?, ?, ?, ?, ?)";
+                "values(?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql,
                 castDB.getDriverId(),
                 castDB.getConductorId(),
@@ -53,7 +57,7 @@ public class CastRepositoryImpl implements CastRepository {
     @Override
     public List<CastDB> getCastByUserId(Long userId) {
         String sql = "select `id`, `User_idDriver`, `User_idConductor`, `Route_id`, " +
-                "`Transport_id`, `startTime`, `endTime`  from `Cast` where User_idDriver = ? or User_idConductor = ?";
+                "`Transport_id`, `startTime`, `endTime`  from `Cast` where (User_idDriver = ? or User_idConductor = ?)";
         return jdbcTemplate.query(sql, rowMapper, userId, userId);
     }
 
@@ -80,9 +84,23 @@ public class CastRepositoryImpl implements CastRepository {
     }
 
     @Override
-    public List<CastDB> getStartedCasts(LocalDateTime now) {
+    public List<CastDB> getJustStartedCasts(LocalDateTime now) {
         String sql = "select `id`, `User_idDriver`, `User_idConductor`, `Route_id`, " +
         "`Transport_id`, `startTime`, `endTime`  from `Cast` where startTime between ? and ?";
         return jdbcTemplate.query(sql, rowMapper, now, now.plusSeconds(61));
+    }
+
+    @Override
+    public Boolean checkFreeUser(Long user, LocalDateTime start, LocalDateTime end) {
+        String sql = "select `id` from `Cast` where (`User_idDriver` = ? or `User_idConductor` = ?) and " +
+                "((startTime between ? and ?) or (endTime between ? and ?))";
+        return jdbcTemplate.query(sql, new Object[]{user, user, start, end, start, end}, longRowMapper).isEmpty();
+    }
+
+    @Override
+    public Boolean checkFreeTransport(Long transport, LocalDateTime start, LocalDateTime end) {
+        String sql = "select `id` from `Cast` where (`Transport_id` = ?) and " +
+                "((startTime between ? and ?) or (endTime between ? and ?))";
+        return jdbcTemplate.query(sql, new Object[]{transport, start, end, start, end}, longRowMapper).isEmpty();
     }
 }

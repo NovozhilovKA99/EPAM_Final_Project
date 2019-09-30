@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Slf4j
 @RestController
@@ -46,7 +47,7 @@ public class RouteController {
         List<Stop> route = stopService.getStopsByRouteId(id);
         List<Stop> routeForward = new ArrayList<Stop>();
         List<Stop> routeBack = new ArrayList<Stop>();
-        Map<Stop, Transport> transportList = positionService.getOnRoute(id);
+        Map<Long, Transport> transportList = positionService.getOnRoute(id);
         Boolean back = false;
         for (Stop stop : route){
             if (!back){

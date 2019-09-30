@@ -23,6 +23,8 @@ public class UserRepositoryImpl implements UserRepository {
             rowStr.getString("password")
     );
 
+    private RowMapper<Long> longRowMapper = (rowStr, rowNum) -> rowStr.getLong("id");
+
     @Override
     public int create(User user) {
         String sql = "insert into `user` (`fullName`, `birthday`, `position`, `contractId`, `login`, `password`) VALUES (?, ?, ?, ?, ?, ?)";
@@ -40,7 +42,7 @@ public class UserRepositoryImpl implements UserRepository {
     public User get(Long id){
         String sql = "Select `id`, `fullName`, `birthday`, `position`, " +
                 "`contractId`, `login`, `password` from `user` where id = ?";
-        return jdbcTemplate.queryForObject(sql, User.class, id);
+        return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
     @Override
@@ -48,6 +50,14 @@ public class UserRepositoryImpl implements UserRepository {
         String sql = "Select `id`, `fullName`, `birthday`, `position`, " +
                 "`contractId`, `login`, `password` from `user` where login = ?";
         return jdbcTemplate.queryForObject(sql, new Object[]{login}, rowMapper);
+    }
+
+    @Override
+    public Boolean checkUserHasType(Long userId, Long transportId){
+        String sql = "Select type_id from `Driver_Has_Type` where user_id = ? and type_id in" +
+                "(Select type_id from model inner join transport on model.id = transport.model_id where " +
+                "transport.id = ?)";
+        return jdbcTemplate.query(sql, longRowMapper, userId, transportId).isEmpty();
     }
 
     @Override

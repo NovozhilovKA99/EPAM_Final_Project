@@ -10,9 +10,9 @@
 
     <body>
         <div class="header">
-            <div class="item"><a href="/route">Главная</div>
+            <a href="/route"><div class="item">Главная</div></a>
             <div class="item-center">Something to do with the transport company</div>
-            <div class="item"><a href="/logout">Выход</a></div>
+            <div class="item"></div>
         </div>
         <div class="center">
             <table width=100%>
@@ -26,7 +26,7 @@
                                             <td>${stop.name}</td>
                                             <td>${stop.indexRoute}</td>
                                             <td>
-                                                <c:if condition="${transport.get(stop)!=null}">
+                                                <c:if test="${transport.get(stop)!=null}">
                                                     Транспорт
                                                 </c:if>
 
@@ -44,7 +44,7 @@
                                             <td>${stop.name}</td>
                                             <td>${stop.indexRoute}</td>
                                             <td>
-                                                <c:if condition="${transport.get(stop)!=null}">
+                                                <c:if test="${transport.get(stop)!=null}">
                                                     Транспорт
                                                 </c:if>
                                             </td>

@@ -16,7 +16,6 @@ public class ErrorHandlerController {
         modelAndView.addObject("message", "Вы встретили редкую страницу," +
                 " обратитесь в тех поддержку чтобы поймать ее");
         modelAndView.addObject("error", ex.getMessage());
-        ex.printStackTrace();
         return modelAndView;
     }
 }

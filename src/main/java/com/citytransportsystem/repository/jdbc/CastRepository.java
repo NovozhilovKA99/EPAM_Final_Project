@@ -1,6 +1,7 @@
 package com.citytransportsystem.repository.jdbc;
 
 import com.citytransportsystem.dto.DB.CastDB;
+import com.citytransportsystem.dto.Transport;
 import com.citytransportsystem.dto.User;
 
 import java.time.LocalDateTime;
@@ -17,5 +18,9 @@ public interface CastRepository {
 
     int delete(Long idCast);
 
-    List<CastDB> getStartedCasts(LocalDateTime now);
+    List<CastDB> getJustStartedCasts(LocalDateTime now);
+
+    Boolean checkFreeUser(Long user, LocalDateTime start, LocalDateTime end);
+
+    Boolean checkFreeTransport(Long transport, LocalDateTime start, LocalDateTime end);
 }

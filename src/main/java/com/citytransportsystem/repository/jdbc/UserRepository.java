@@ -12,4 +12,6 @@ public interface UserRepository {
     int update(User user);
 
     int delete(Long idUser);
+
+    public Boolean checkUserHasType(Long idUser, Long idTransport);
 }

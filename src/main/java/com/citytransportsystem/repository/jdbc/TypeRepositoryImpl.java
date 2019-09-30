@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TypeRepositoryImpl implements TypeRepository {
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     private RowMapper<Type> rowMapper = (rowStr, rowNum) -> new Type(
             rowStr.getLong("id"),
@@ -29,7 +29,7 @@ public class TypeRepositoryImpl implements TypeRepository {
     @Override
     public Type get(Long id) {
         String sql = "select `id`, `description` `Type` where `id` = ?";
-        return jdbcTemplate.queryForObject(sql, Type.class, id);
+        return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
     @Override
