@@ -1,0 +1,67 @@
+start transaction;
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 1Route: 1",1,0,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 2Route: 1",1,1,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 3Route: 1",1,2,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 4Route: 1",1,3,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 5Route: 1",1,4,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 6Route: 1",1,5,true);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 7Route: 1",1,6,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 8Route: 1",1,7,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 9Route: 1",1,8,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 10Route: 1",1,9,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 11Route: 1",1,10,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 12Route: 1",1,11,true);
+
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 1Route: 2",2,0,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 2Route: 2",2,1,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 3Route: 2",2,2,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 4Route: 2",2,3,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 5Route: 2",2,4,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 6Route: 2",2,5,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 7Route: 2",2,6,true);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 8Route: 2",2,7,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 9Route: 2",2,8,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 10Route: 2",2,9,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 11Route: 2",2,10,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 12Route: 2",2,11,true);
+
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 1Route: 3",3,0,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 2Route: 3",3,1,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 3Route: 3",3,2,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 4Route: 3",3,3,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 5Route: 3",3,4,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 6Route: 3",3,5,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 7Route: 3",3,6,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 8Route: 3",3,7,true);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 9Route: 3",3,8,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 10Route: 3",3,9,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 11Route: 3",3,10,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 12Route: 3",3,11,true);
+
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 1Route: 4",4,0,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 2Route: 4",4,1,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 3Route: 4",4,2,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 4Route: 4",4,3,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 5Route: 4",4,4,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 6Route: 4",4,5,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 7Route: 4",4,6,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 8Route: 4",4,7,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 9Route: 4",4,8,true);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 10Route: 4",4,9,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 11Route: 4",4,10,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 12Route: 4",4,11,true);
+
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 1Route: 5",5,0,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 2Route: 5",5,1,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 3Route: 5",5,2,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 4Route: 5",5,3,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 5Route: 5",5,4,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 6Route: 5",5,5,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 7Route: 5",5,6,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 8Route: 5",5,7,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 9Route: 5",5,8,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 10Route: 5",5,9,true);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 11Route: 5",5,10,false);
+insert into Stop (name, route_Id, indexRoute, end) VALUES ("testStop 12Route: 5",5,11,true);
+
+commit;

@@ -1,0 +1,1 @@
+insert into Cast (User_idDriver, User_idConductor, Route_id, Transport_id, startTime, endTime) values(10, 4, 1, 1, "2019-09-23 11:55:00", "2019-09-23 13:00:00");
