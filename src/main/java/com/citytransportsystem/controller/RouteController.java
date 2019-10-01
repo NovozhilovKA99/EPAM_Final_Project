@@ -1,5 +1,6 @@
 package com.citytransportsystem.controller;
 
+import com.citytransportsystem.dto.Cast;
 import com.citytransportsystem.dto.DB.RouteDB;
 import com.citytransportsystem.dto.Stop;
 import com.citytransportsystem.dto.Transport;
@@ -47,12 +48,12 @@ public class RouteController {
         List<Stop> route = stopService.getStopsByRouteId(id);
         List<Stop> routeForward = new ArrayList<Stop>();
         List<Stop> routeBack = new ArrayList<Stop>();
-        Map<Long, Transport> transportList = positionService.getOnRoute(id);
+        Map<Long, Cast> cast = positionService.getOnRoute(id);
         Boolean back = false;
         for (Stop stop : route){
             if (!back){
                 routeForward.add(stop);
-                back = back || stop.isEnd();
+                back = stop.isEnd();
             }
             else{
                 routeBack.add(stop);
@@ -60,7 +61,7 @@ public class RouteController {
         }
         modelAndView.addObject("routeForward", routeForward);
         modelAndView.addObject("routeBack", routeBack);
-        modelAndView.addObject("transport", transportList);
+        modelAndView.addObject("transport", cast);
         return modelAndView;
     }
 }

@@ -1,4 +1,4 @@
-package com.citytransportsystem.Interseptor;
+package com.citytransportsystem.Interceptor;
 
 import com.citytransportsystem.dto.User;
 import com.citytransportsystem.service.UserManager;

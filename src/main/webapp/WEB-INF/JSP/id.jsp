@@ -26,7 +26,7 @@
                                             <td>${stop.name}</td>
                                             <td>${stop.indexRoute}</td>
                                             <td>
-                                                <c:if test="${transport.get(stop)!=null}">
+                                                <c:if test="${transport.get(stop.id)!=null}">
                                                     Транспорт
                                                 </c:if>
 
@@ -44,7 +44,7 @@
                                             <td>${stop.name}</td>
                                             <td>${stop.indexRoute}</td>
                                             <td>
-                                                <c:if test="${transport.get(stop)!=null}">
+                                                <c:if test="${transport.get(stop.id)!=null}">
                                                     Транспорт
                                                 </c:if>
                                             </td>

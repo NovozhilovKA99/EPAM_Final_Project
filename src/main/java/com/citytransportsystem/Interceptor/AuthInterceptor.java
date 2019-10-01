@@ -1,4 +1,4 @@
-package com.citytransportsystem.Interseptor;
+package com.citytransportsystem.Interceptor;
 
 import com.citytransportsystem.service.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;

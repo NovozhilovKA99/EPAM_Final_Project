@@ -1,5 +1,6 @@
 package com.citytransportsystem.service;
 
+import com.citytransportsystem.dto.Cast;
 import com.citytransportsystem.dto.Stop;
 import com.citytransportsystem.dto.Transport;
 
@@ -8,7 +9,7 @@ import java.util.Set;
 
 public interface PositionService {
 
-    Map<Long, Transport> getOnRoute(Long routeId);
+    Map<Long, Cast> getOnRoute(Long routeId);
 
-    Boolean addTransport(Transport transport, Long routeId);
+    Boolean addCast(Cast cast, Long routeId);
 }

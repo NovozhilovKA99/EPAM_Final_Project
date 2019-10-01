@@ -1,10 +1,18 @@
 package com.citytransportsystem.service;
 
+import com.citytransportsystem.dto.Cast;
+import com.citytransportsystem.dto.Position;
+import com.citytransportsystem.dto.Stop;
 import com.citytransportsystem.dto.Transport;
+import com.citytransportsystem.repository.jdbc.RouteRepository;
+import com.citytransportsystem.repository.jdbc.StopRepository;
 import com.sun.java.accessibility.util.Translator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -12,30 +20,51 @@ import java.util.stream.Collectors;
 @Service
 public class PositionServiceImpl implements PositionService {
 
-    private Map<Long, Set<Transport>> transportOnRoute;
+    private Map<Long, Set<Cast>> castOnRoute;
+
+    @Autowired
+    private StopRepository stopRepository;
 
     public PositionServiceImpl() {
-        this.transportOnRoute = new HashMap<Long, Set<Transport>>();
+        this.castOnRoute = new HashMap<Long, Set<Cast>>();
     }
 
     @Override
-    public Map<Long, Transport> getOnRoute(Long routeId) {
-        return transportOnRoute.get(routeId).stream()
+    public Map<Long, Cast> getOnRoute(Long routeId) {
+        return castOnRoute.get(routeId).stream()
                 .collect(
                         Collectors
                                 .toMap(
-                                        (Transport transport) -> transport.getPosition().getStop().getId(),
-                                        transport -> transport));
+                                        (Cast cast) -> cast.getTransport().getPosition().getStop().getId(),
+                                        cast -> cast));
     }
 
     @Override
-    public Boolean addTransport(Transport transport, Long routeId) {
-        if(transportOnRoute.get(routeId) != null){
-            return transportOnRoute.get(routeId).add(transport);
+    public Boolean addCast(Cast cast, Long routeId) {
+        if(castOnRoute.get(routeId) != null){
+            return castOnRoute.get(routeId).add(cast);
         }
         else{
-            transportOnRoute.put(routeId, new HashSet<Transport>(Collections.singletonList(transport)));
+            castOnRoute.put(routeId, new HashSet<Cast>(Collections.singletonList(cast)));
             return true;
         }
     }
+
+    @Scheduled(fixedRate = 60000)
+    public void moveCasts(){
+        for (Set<Cast> castSet : castOnRoute.values()){
+            for (Cast cast : castSet){
+                castSet.removeIf(current -> current.getEndTime().isAfter(LocalDateTime.now()));
+                Position position = cast.getTransport().getPosition();
+                Stop stop = position.getStop();
+                try {
+                    position.setStop(stopRepository.getNextStop(stop));
+                }
+                catch (Exception exc){
+                    position.setStop(stopRepository.getFirstStopForRoute(stop.getRouteId()));
+                }
+            }
+        }
+    }
+
 }

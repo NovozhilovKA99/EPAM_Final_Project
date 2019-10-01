@@ -73,7 +73,10 @@ public class StopRepositoryImpl implements StopRepository {
 
     @Override
     public Stop getNextStop(Stop stop){
-        String sql = "";
-        return jdbcTemplate.queryForObject(sql, rowMapper);
+        String sql = "select `id`, `name`, `route_Id`, `indexRoute`, `end` " +
+                "from `Stop` where `route_Id` = ? and `indexRoute` = ?";
+        return jdbcTemplate.queryForObject(sql, rowMapper,
+                stop.getRouteId(),
+                stop.getIndexRoute() + 1);
     };
 }

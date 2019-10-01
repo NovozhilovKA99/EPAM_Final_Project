@@ -77,9 +77,7 @@ public class CastServiceImpl implements CastService {
     public void checkStartedCasts(){
         List<CastDB> castDBList = castRepository.getJustStartedCasts(LocalDateTime.now());
         for(CastDB castDB : castDBList){
-            Transport transport = transportRepository.get(castDB.getTransportId());
-            transport.setPosition(new Position(stopRepository.getFirstStopForRoute(castDB.getRouteId())));
-            positionService.addTransport(transport, castDB.getRouteId());
+            positionService.addCast(castConverterImpl.convertToCast(castDB), castDB.getRouteId());
         }
     }
 }
