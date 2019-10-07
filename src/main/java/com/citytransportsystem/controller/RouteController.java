@@ -22,11 +22,11 @@ import java.util.Set;
 
 @Slf4j
 @RestController
-@RequestMapping("route")
+@RequestMapping()
 public class RouteController {
 
     @Autowired
-    PositionService positionService;
+    private PositionService positionService;
 
     @Autowired
     private RouteService routeService;
@@ -34,7 +34,7 @@ public class RouteController {
     @Autowired
     private StopService stopService;
 
-    @GetMapping
+    @GetMapping("/")
     public ModelAndView getRoute(ModelAndView modelAndView){
         modelAndView.setViewName("route");
         List<RouteDB> routes = routeService.getAllRoutes();
@@ -42,7 +42,7 @@ public class RouteController {
         return modelAndView;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("route/{id}")
     public ModelAndView getRoute(ModelAndView modelAndView, @PathVariable Long id){
         modelAndView.setViewName("id");
         List<Stop> route = stopService.getStopsByRouteId(id);

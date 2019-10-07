@@ -31,6 +31,9 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public Map<Long, Cast> getOnRoute(Long routeId) {
+        if (castOnRoute.get(routeId) == null){
+            return new HashMap<>();
+        }
         return castOnRoute.get(routeId).stream()
                 .collect(
                         Collectors

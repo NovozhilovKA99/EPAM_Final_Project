@@ -55,6 +55,13 @@ public class LogRegController {
         return modelAndView;
     }
 
+    @GetMapping("/logout")
+    public ModelAndView logoutPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/login");
+        return modelAndView;
+    }
+
     @PostMapping("/registration")
     public ModelAndView registration(User user) {
         ModelAndView modelAndView = new ModelAndView();

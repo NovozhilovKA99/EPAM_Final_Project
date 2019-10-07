@@ -1,5 +1,6 @@
 package com.citytransportsystem.controller;
 
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -16,6 +17,7 @@ public class ErrorHandlerController {
         modelAndView.addObject("message", "Вы встретили редкую страницу," +
                 " обратитесь в тех поддержку чтобы поймать ее");
         modelAndView.addObject("error", ex.getMessage());
+        log.error("Error", ex);
         return modelAndView;
     }
 }
