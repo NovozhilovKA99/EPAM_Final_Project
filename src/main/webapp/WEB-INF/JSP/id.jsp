@@ -10,7 +10,7 @@
 
     <body>
         <div class="header">
-            <a href="/route"><div class="item">Главная</div></a>
+            <a href="/"><div class="item">Главная</div></a>
             <div class="item-center">Something to do with the transport company</div>
             <div class="item"></div>
         </div>

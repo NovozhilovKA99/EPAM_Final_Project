@@ -23,8 +23,8 @@
                 <div class="input-text-wrap"><input type="datetime-local" class="input-text" name="birthday" placeholder="Дата рождения"></div>
                 <div class="input-text-wrap">
                     <select name="position" size="1" class="input-text">
-                        <option>Кондуктор</option>
-                        <option>Водитель</option>
+                        <option>Conductor</option>
+                        <option>Driver</option>
                     </select>
                 </div>
                 <c:forEach var="error" items="${errorMsg}">

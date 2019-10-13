@@ -34,7 +34,7 @@ public class RouteController {
     @Autowired
     private StopService stopService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public ModelAndView getRoute(ModelAndView modelAndView){
         modelAndView.setViewName("route");
         List<RouteDB> routes = routeService.getAllRoutes();
