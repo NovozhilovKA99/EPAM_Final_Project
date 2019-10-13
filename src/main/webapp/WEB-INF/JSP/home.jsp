@@ -32,15 +32,15 @@
             </tr>
             <c:forEach var="cast" items="${casts}">
                 <tr>
-                    <th>${cast.route.number}</th>
-                    <th>${cast.type.description}</th>
-                    <th>${cast.model.description}</th>
-                    <th>${cast.transport.regPlate}</th>
-                    <th>${cast.driver.fullName}</th>
-                    <th>${cast.conductor.fullName}</th>
-                    <th>${cast.startTime.toLocalDate()}</th>
-                    <th>${cast.startTime.toLocalTime()}</th>
-                    <th>${cast.endTime.toLocalTime()}</th>
+                    <td>${cast.getRouteDB().getNumber()}</td>
+                    <td>${cast.getType().getDescription()}</td>
+                    <td>${cast.getModel().getDescription()}</td>
+                    <td>${cast.getTransport().getRegPlate()}</td>
+                    <td>${cast.getDriver().getFullName()}</td>
+                    <td>${cast.getConductor().getFullName()}</td>
+                    <td>${cast.getStartTime().toLocalDate()}</td>
+                    <td>${cast.getStartTime().toLocalTime()}</td>
+                    <td>${cast.getEndTime().toLocalTime()}</td>
                 </tr>
             </c:forEach>
         </table>

@@ -3,6 +3,7 @@ package com.citytransportsystem.dto;
 import com.citytransportsystem.dto.DB.RouteDB;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Cast {
     private User driver;
@@ -89,5 +90,25 @@ public class Cast {
 
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cast cast = (Cast) o;
+        return Objects.equals(driver, cast.driver) &&
+                Objects.equals(conductor, cast.conductor) &&
+                Objects.equals(routeDB, cast.routeDB) &&
+                Objects.equals(transport, cast.transport) &&
+                Objects.equals(model, cast.model) &&
+                Objects.equals(type, cast.type) &&
+                Objects.equals(startTime, cast.startTime) &&
+                Objects.equals(endTime, cast.endTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(driver, conductor, routeDB, transport, model, type, startTime, endTime);
     }
 }

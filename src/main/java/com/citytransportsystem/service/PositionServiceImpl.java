@@ -53,9 +53,9 @@ public class PositionServiceImpl implements PositionService {
                                         (Cast cast) ->
                                             cast.getTransport().getPosition().getStop().getId()
                                         ,
-                                        cast -> cast,
-                                        (routeId0, routeId1) -> {
-                                            return routeId0;
+                                        (Cast cast) -> cast,
+                                        (cast,cast1) -> {
+                                            return cast;
                                         }
                                         )
                         );

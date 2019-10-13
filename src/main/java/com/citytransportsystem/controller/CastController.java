@@ -35,7 +35,7 @@ public class CastController {
     ModelAndView getHome(ModelAndView modelAndView){
         modelAndView.setViewName("home");
         List<Cast> casts = castService.getCastByUser(userManager.getUser());
-        modelAndView.addObject(casts);
+        modelAndView.addObject("casts", casts);
         modelAndView.addObject("user", userManager.getUser());
         return modelAndView;
     }

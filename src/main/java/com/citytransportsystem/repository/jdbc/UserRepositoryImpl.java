@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements UserRepository {
             rowStr.getString("password")
     );
 
-    private RowMapper<Long> longRowMapper = (rowStr, rowNum) -> rowStr.getLong("id");
+    private RowMapper<Long> longRowMapper = (rowStr, rowNum) -> rowStr.getLong("type_id");
 
     @Override
     public int create(User user) {
@@ -57,7 +57,7 @@ public class UserRepositoryImpl implements UserRepository {
         String sql = "Select type_id from `Driver_Has_Type` where user_id = ? and type_id in" +
                 "(Select type_id from model inner join transport on model.id = transport.model_id where " +
                 "transport.id = ?)";
-        return jdbcTemplate.query(sql, longRowMapper, userId, transportId).isEmpty();
+        return !jdbcTemplate.query(sql, longRowMapper, userId, transportId).isEmpty();
     }
 
     @Override
