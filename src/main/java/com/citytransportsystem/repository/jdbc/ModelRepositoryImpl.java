@@ -32,8 +32,8 @@ public class ModelRepositoryImpl implements ModelRepository {
 
     @Override
     public Model get(Long id) {
-        String sql = "select * from `Model` where `id` = ?";
-        return jdbcTemplate.queryForObject(sql, Model.class, id);
+        String sql = "select `id`, `description`, `Type_id` from `Model` where `id` = ?";
+        return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
     @Override

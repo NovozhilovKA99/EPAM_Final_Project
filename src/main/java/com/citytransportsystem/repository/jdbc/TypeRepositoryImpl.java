@@ -28,7 +28,7 @@ public class TypeRepositoryImpl implements TypeRepository {
 
     @Override
     public Type get(Long id) {
-        String sql = "select `id`, `description` `Type` where `id` = ?";
+        String sql = "select `id`, `description` from `Type`  where `id` = ?";
         return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 

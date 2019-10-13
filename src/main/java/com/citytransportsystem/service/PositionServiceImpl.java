@@ -1,6 +1,7 @@
 package com.citytransportsystem.service;
 
 import com.citytransportsystem.dto.Cast;
+import com.citytransportsystem.dto.DB.RouteDB;
 import com.citytransportsystem.dto.Position;
 import com.citytransportsystem.dto.Stop;
 import com.citytransportsystem.dto.Transport;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -25,8 +27,18 @@ public class PositionServiceImpl implements PositionService {
     @Autowired
     private StopRepository stopRepository;
 
+    @Autowired
+    private RouteRepository routeRepository;
+
     public PositionServiceImpl() {
         this.castOnRoute = new HashMap<Long, Set<Cast>>();
+    }
+
+    @PostConstruct
+    private void setRoutes(){
+        for (RouteDB routeDB : routeRepository.get()){
+            castOnRoute.put(routeDB.getId(), new HashSet<Cast>());
+        }
     }
 
     @Override
@@ -38,22 +50,26 @@ public class PositionServiceImpl implements PositionService {
                 .collect(
                         Collectors
                                 .toMap(
-                                        (Cast cast) -> cast.getTransport().getPosition().getStop().getId(),
-                                        cast -> cast));
+                                        (Cast cast) ->
+                                            cast.getTransport().getPosition().getStop().getId()
+                                        ,
+                                        cast -> cast,
+                                        (routeId0, routeId1) -> {
+                                            return routeId0;
+                                        }
+                                        )
+                        );
     }
 
     @Override
     public Boolean addCast(Cast cast, Long routeId) {
-        if(castOnRoute.get(routeId) != null){
-            return castOnRoute.get(routeId).add(cast);
-        }
-        else{
-            castOnRoute.put(routeId, new HashSet<Cast>(Collections.singletonList(cast)));
-            return true;
-        }
+        cast.getTransport().setPosition(new Position(stopRepository.getFirstStopForRoute(
+                cast.getRouteDB().getId()
+        )));
+        return castOnRoute.get(cast.getRouteDB().getId()).add(cast);
     }
 
-    @Scheduled(fixedRate = 60000)
+    @Override
     public void moveCasts(){
         for (Set<Cast> castSet : castOnRoute.values()){
             for (Cast cast : castSet){
@@ -68,6 +84,7 @@ public class PositionServiceImpl implements PositionService {
                 }
             }
         }
+        log.info("Casts moved");
     }
 
 }

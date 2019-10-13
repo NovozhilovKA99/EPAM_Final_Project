@@ -12,4 +12,6 @@ public interface PositionService {
     Map<Long, Cast> getOnRoute(Long routeId);
 
     Boolean addCast(Cast cast, Long routeId);
+
+    void moveCasts();
 }

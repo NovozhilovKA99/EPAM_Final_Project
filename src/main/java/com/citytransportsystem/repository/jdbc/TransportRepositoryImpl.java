@@ -31,7 +31,7 @@ public class TransportRepositoryImpl implements TransportRepository {
     @Override
     public Transport get(Long idTransport) {
         String sql = "select `id`, `model_id`, `regPlate` from `transport` where `id` = ?";
-        return jdbcTemplate.queryForObject(sql, rowMapper);
+        return jdbcTemplate.queryForObject(sql, rowMapper, idTransport);
     }
 
     @Override

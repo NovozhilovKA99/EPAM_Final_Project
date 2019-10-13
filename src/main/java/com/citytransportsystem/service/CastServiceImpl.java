@@ -58,7 +58,7 @@ public class CastServiceImpl implements CastService {
 
     @Override
     public int insert(CastDB cast)  throws UserException, RouteException, TransportException {
-        if(userRepository.checkUserHasType(cast.getDriverId(), cast.getTransportId())){
+        if(!userRepository.checkUserHasType(cast.getDriverId(), cast.getTransportId())){
             throw new UserException("Водитель не имеет права управлять транспортным средством такого типа");
         }
         if(!castRepository.checkFreeUser(cast.getDriverId(), cast.getStartTime(), cast.getEndTime())){
@@ -75,9 +75,11 @@ public class CastServiceImpl implements CastService {
 
     @Scheduled(fixedRate = 60000)
     public void checkStartedCasts(){
+        positionService.moveCasts();
         List<CastDB> castDBList = castRepository.getJustStartedCasts(LocalDateTime.now());
         for(CastDB castDB : castDBList){
             positionService.addCast(castConverterImpl.convertToCast(castDB), castDB.getRouteId());
         }
+        log.info("Casts added", castDBList);
     }
 }
